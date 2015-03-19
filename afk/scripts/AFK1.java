@@ -52,85 +52,85 @@ public class AFK1 extends Task {
 			int randomTab = Random.nextInt(1, 20);
 			
 			if(randomTab == 1){
-				paintStatus = "Random Tab: Attack.";
+				paintStatus = "Random Tab - Attack.";
 				ctx.game.tab(Tab.ATTACK);
 				Condition.sleep(Random.nextInt(800, 1800));
 				ctx.game.tab(Tab.INVENTORY);
 				
 			}else if(randomTab == 2){
-				paintStatus = "Random Tab: Clan Chat.";
+				paintStatus = "Random Tab - Clan Chat.";
 				ctx.game.tab(Tab.CLAN_CHAT);
 				Condition.sleep(Random.nextInt(800, 1800));
 				ctx.game.tab(Tab.INVENTORY);
 				
 			}else if(randomTab == 3){
-				paintStatus = "Random Tab: Emotes.";
+				paintStatus = "Random Tab - Emotes.";
 				ctx.game.tab(Tab.EMOTES);
 				Condition.sleep(Random.nextInt(800, 1800));
 				ctx.game.tab(Tab.INVENTORY);
 				
 			}else if(randomTab == 4){
-				paintStatus = "Random Tab: Equipment.";
+				paintStatus = "Random Tab - Equipment.";
 				ctx.game.tab(Tab.EQUIPMENT);
 				Condition.sleep(Random.nextInt(800, 1800));
 				ctx.game.tab(Tab.INVENTORY);
 				
 			}else if(randomTab == 5){
-				paintStatus = "Random Tab: Friends List.";
+				paintStatus = "Random Tab - Friends List.";
 				ctx.game.tab(Tab.FRIENDS_LIST);
 				Condition.sleep(Random.nextInt(800, 1800));
 				ctx.game.tab(Tab.INVENTORY);
 				
 			}else if(randomTab == 6){
-				paintStatus = "Random Tab: Ignored List.";
+				paintStatus = "Random Tab - Ignored List.";
 				ctx.game.tab(Tab.IGNORED_LIST);
 				Condition.sleep(Random.nextInt(800, 1800));
 				ctx.game.tab(Tab.INVENTORY);
 				
 			}else if(randomTab == 7){
-				paintStatus = "Random Tab: Inventory.";
+				paintStatus = "Random Tab - Inventory.";
 				ctx.game.tab(Tab.INVENTORY);
 				Condition.sleep(Random.nextInt(800, 1800));
 				ctx.game.tab(Tab.INVENTORY);
 				
 			}else if(randomTab == 8){
-				paintStatus = "Random Tab: Logout.";
+				paintStatus = "Random Tab - Logout.";
 				ctx.game.tab(Tab.LOGOUT);
 				Condition.sleep(Random.nextInt(800, 1800));
 				ctx.game.tab(Tab.INVENTORY);
 				
 			}else if(randomTab == 9){
-				paintStatus = "Random Tab: Magic.";
+				paintStatus = "Random Tab - Magic.";
 				ctx.game.tab(Tab.MAGIC);
 				Condition.sleep(Random.nextInt(800, 1800));
 				ctx.game.tab(Tab.INVENTORY);
 				
 			}else if(randomTab == 10){
-				paintStatus = "Random Tab: Music.";
+				paintStatus = "Random Tab - Music.";
 				ctx.game.tab(Tab.MUSIC);
 				Condition.sleep(Random.nextInt(800, 1800));
 				ctx.game.tab(Tab.INVENTORY);
 				
 			}else if(randomTab == 11){
-				paintStatus = "Random Tab: Options.";
+				paintStatus = "Random Tab - Options.";
 				ctx.game.tab(Tab.OPTIONS);
 				Condition.sleep(Random.nextInt(800, 1800));
 				ctx.game.tab(Tab.INVENTORY);
 				
 			}else if(randomTab == 12){
-				paintStatus = "Random Tab: Prayer.";
+				paintStatus = "Random Tab - Prayer.";
 				ctx.game.tab(Tab.PRAYER);
 				Condition.sleep(Random.nextInt(800, 1800));
 				ctx.game.tab(Tab.INVENTORY);
 				
 			}else if(randomTab == 13){
-				paintStatus = "Random Tab: Quests.";
+				paintStatus = "Random Tab - Quests.";
 				ctx.game.tab(Tab.QUESTS);
 				Condition.sleep(Random.nextInt(800, 1800));
 				ctx.game.tab(Tab.INVENTORY);
 				
 			}else if(randomTab == 14){
-				paintStatus = "Random Tab: Stats.";
+				paintStatus = "Random Tab - Stats.";
 				ctx.game.tab(Tab.STATS);
 				Condition.sleep(Random.nextInt(800, 1800));
 				ctx.game.tab(Tab.INVENTORY);
@@ -139,19 +139,19 @@ public class AFK1 extends Task {
 			
 			/// Random Camera
 			case 3:
-				paintStatus = "Random Camera: Angle.";
+				paintStatus = "Random Camera - Angle.";
 				ctx.camera.angle(Random.nextInt(1, 359));
 				Condition.sleep(Random.nextInt(1000, 2000));
 				break;
 				
 			case 4:
-				paintStatus = "Random Camera: Pitch.";
+				paintStatus = "Random Camera - Pitch.";
 				ctx.camera.pitch(Random.nextInt(1, 100));
 				Condition.sleep(Random.nextInt(1000, 2000));
 				break;
 				
 			case 5:
-				paintStatus = "Random Camera: Pitch & Angle.";
+				paintStatus = "Random Camera - Pitch & Angle.";
 				ctx.camera.angle(Random.nextInt(1, 359));
 				ctx.camera.pitch(Random.nextInt(1, 100));
 				Condition.sleep(Random.nextInt(1000, 2000));
@@ -160,7 +160,7 @@ public class AFK1 extends Task {
 			/// Random Move To Myself
 			case 6:
 				final Tile meme = new Tile(ctx.players.local().tile().x(), ctx.players.local().tile().y());
-				paintStatus = "Random Movement: "+meme;
+				paintStatus = "Random Movement - " + meme + ".";
 				ctx.movement.step(meme);
 				Condition.sleep(Random.nextInt(1000, 2000));
 				break;
@@ -176,11 +176,33 @@ public class AFK1 extends Task {
 				int[] bankerIds = { 5455, 5456 };
 				Npc bank1 = ctx.npcs.select().id(bankerIds).poll();
 				if (bank1.inViewport()){
-					paintStatus = "Random: Bank Open";
+					paintStatus = "Random - Bank Open.";
 					bank1.interact("Bank");
 					Condition.sleep(Random.nextInt(10000, 20000));
-					paintStatus = "Random: Bank Close";
+					paintStatus = "Random - Bank Close.";
 					ctx.bank.close();
+				}
+				Condition.sleep(Random.nextInt(1000, 2000));
+				break;
+				
+				/// Random Talk
+			case 9:	
+				int[] geIds = { 2150, 2151 };
+				Npc ge1 = ctx.npcs.select().id(geIds).poll();
+				if (ge1.inViewport()){
+					paintStatus = "Random - Talk to GE Clerk.";
+					ge1.interact("Talk-To");
+					Condition.sleep(Random.nextInt(10000, 20000));
+				}
+				Condition.sleep(Random.nextInt(1000, 2000));
+				break;
+				
+			case 10:	
+				int[] bankerIdss = { 5455, 5456 };
+				Npc bank11 = ctx.npcs.select().id(bankerIdss).poll();
+				if (bank11.inViewport()){
+					paintStatus = "Random - Talk to Banker.";
+					bank11.interact("Talk-To");
 				}
 				Condition.sleep(Random.nextInt(1000, 2000));
 				break;
