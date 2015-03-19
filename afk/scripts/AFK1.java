@@ -30,14 +30,18 @@ public class AFK1 extends Task {
     	/// Random Running
 		case 0:
 			if (ctx.movement.running(true)){
+				paintStatus = "Random Disable: Run.";
+				Condition.sleep(Random.nextInt(500, 2000));
 				ctx.movement.running(false);
 				Condition.sleep(Random.nextInt(500, 2000));
 
 			} else if (ctx.movement.running(false)){
+				paintStatus = "Random Enable: Run.";
+				Condition.sleep(Random.nextInt(500, 2000));
 				ctx.movement.running(true);
 				Condition.sleep(Random.nextInt(500, 2000));
 			}
-			
+			Condition.sleep(Random.nextInt(500, 2000));
 			break;
 			
 		/// Random Tabs
