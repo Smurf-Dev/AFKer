@@ -4,8 +4,8 @@ import org.powerbot.script.Condition;
 import org.powerbot.script.Random;
 import org.powerbot.script.Tile;
 import org.powerbot.script.rt4.ClientContext;
-import org.powerbot.script.rt4.GameObject;
 import org.powerbot.script.rt4.Game.Tab;
+import org.powerbot.script.rt4.Npc;
 
 import afk.node.Task;
 
@@ -168,18 +168,22 @@ public class AFK1 extends Task {
 			/// Random Wait
 			case 7:
 				paintStatus = "Nuthin...";
-				Condition.sleep(Random.nextInt(100, 800));
+				Condition.sleep(Random.nextInt(1000, 8000));
 				break;
 				
 			/// Random Bank Open
-			case 8:
-				paintStatus = "Random: Bank Open & Close...";
-				GameObject bankBooth = ctx.objects.select().nearest().poll();
-				if (bankBooth.inViewport()){
-					bankBooth.interact("Bank");
+			case 8:	
+				int[] bankerIds = { 5455, 5456 };
+				Npc bank1 = ctx.npcs.select().id(bankerIds).poll();
+				if (bank1.inViewport()){
+					paintStatus = "Random: Bank Open";
+					bank1.interact("Bank");
 					Condition.sleep(Random.nextInt(10000, 20000));
-					ctx.menu.close();
+					paintStatus = "Random: Bank Close";
+					ctx.bank.close();
 				}
+				Condition.sleep(Random.nextInt(1000, 2000));
+				break;
     	}
     	
     }
