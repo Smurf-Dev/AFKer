@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,8 +49,6 @@ public class Main extends PollingScript<ClientContext> implements PaintListener{
     
     public void repaint(final Graphics g) {
     	
-    	long currentTime = System.currentTimeMillis();
-    	    	
     	Point m = ctx.input.getLocation();
     	
         int mX = (int) m.getX();
@@ -63,7 +62,7 @@ public class Main extends PollingScript<ClientContext> implements PaintListener{
     	g.setColor(fontColor);
         g.setFont(font);
         g.drawString("Author: xXJAMYBOIXx", textAlignY, 465);
-        g.drawString("Time Spent AFKing: " + (int)(currentTime-startTime)/3600000 + ":" + (int)((currentTime-startTime)-(((currentTime-startTime)/3600000)*3600000))/60000 + ":" + (int)((currentTime-startTime)-(((currentTime-startTime)/3600000)*3600000)-(((currentTime-startTime)-(((currentTime-startTime)/3600000)*3600000))/60000)*60000)/1000, textAlignY, 415);
+        g.drawString("Time Spent AFKing: " + runTime(startTime), textAlignY, 415);
         g.drawString("Status: " + AFK1.paintStatus, textAlignY, 365);
         
         /// Mouse
@@ -71,4 +70,16 @@ public class Main extends PollingScript<ClientContext> implements PaintListener{
         g.drawLine(mX + 600, mY + 600, mX - 600, mY - 600);
     	
     }
+    
+    private String runTime(long i) {
+        DecimalFormat format = new DecimalFormat("00");
+        long millis = System.currentTimeMillis() - i;
+        long hours = millis / (1000 * 60 * 60);
+        millis -= hours * (1000 * 60 * 60);
+        long minutes = millis / (1000 * 60);
+        millis -= minutes * (1000 * 60);
+        long seconds = millis / 1000;
+        return format.format(hours) + ":" + format.format(minutes) + ":" + format.format(seconds);
+    }
+    
 }
