@@ -27,6 +27,11 @@ public class Main extends PollingScript<ClientContext> implements PaintListener{
     
     private static int textAlignY = 14;
     
+    int startX = 7;
+    int startY = 345;
+    int endX = 505;
+    int endY = 128;
+    
 	@Override
     public void start() {
         taskList.addAll(Arrays.asList(new AFK1(ctx)));
@@ -49,11 +54,6 @@ public class Main extends PollingScript<ClientContext> implements PaintListener{
     	
         int mX = (int) m.getX();
         int mY = (int) m.getY();
-        
-        int startX = 7;
-        int startY = 345;
-        int endX = 505;
-        int endY = 128;
         
         /// Not Mouse
         g.setColor(Color.BLACK);
