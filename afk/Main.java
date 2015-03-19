@@ -56,8 +56,8 @@ public class Main extends PollingScript<ClientContext> implements PaintListener{
         int endY = 128;
         
         /// Mouse
-        g.drawLine(mX - 600, mY + 600, mX - 600, mY + 600);
-        g.drawLine(mX - 600, mY - 600, mX - 600, mY - 600);
+        g.drawLine(mX + 600, mY - 600, mX - 600, mY + 600);
+        g.drawLine(mX + 600, mY + 600, mX - 600, mY - 600);
     	
         /// Not Mouse
         g.setColor(Color.BLACK);
