@@ -55,10 +55,6 @@ public class Main extends PollingScript<ClientContext> implements PaintListener{
         int endX = 505;
         int endY = 128;
         
-        /// Mouse
-        g.drawLine(mX + 600, mY - 600, mX - 600, mY + 600);
-        g.drawLine(mX + 600, mY + 600, mX - 600, mY - 600);
-    	
         /// Not Mouse
         g.setColor(Color.BLACK);
         g.drawRect(startX-1, startY-1, endX+1, endY+1);
@@ -69,5 +65,10 @@ public class Main extends PollingScript<ClientContext> implements PaintListener{
         g.drawString("Author: xXJAMYBOIXx", textAlignY, 465);
         g.drawString("Time Spent AFKing: " + (int)(currentTime-startTime)/3600000 + ":" + (int)((currentTime-startTime)-(((currentTime-startTime)/3600000)*3600000))/60000 + ":" + (int)((currentTime-startTime)-(((currentTime-startTime)/3600000)*3600000)-(((currentTime-startTime)-(((currentTime-startTime)/3600000)*3600000))/60000)*60000)/1000, textAlignY, 415);
         g.drawString("Status: " + AFK1.paintStatus, textAlignY, 365);
+        
+        /// Mouse
+        g.drawLine(mX + 600, mY - 600, mX - 600, mY + 600);
+        g.drawLine(mX + 600, mY + 600, mX - 600, mY - 600);
+    	
     }
 }
